@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AMPagerTabs_Example' do
+  pod 'AMPagerTabs', :path => '../'
+
+  target 'AMPagerTabs_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
