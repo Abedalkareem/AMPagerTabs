@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tYq-dd-lfb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Things-->
+        <scene sceneID="iPo-Qq-ZbK">
+            <objects>
+                <viewController id="mv3-kZ-kqS" customClass="ViewController" customModule="AMPagerTabs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qks-Id-W1g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="S9C-KX-tZS"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Things" id="cBX-AF-Zzw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bUW-db-7tY" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-92" y="133"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Xat-I0-DdU">
+            <objects>
+                <viewController storyboardIdentifier="giftViewController" id="CTl-P5-5Hc" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wp2-wG-AQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift" translatesAutoresizingMaskIntoConstraints="NO" id="CNO-Vq-N8G">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="KqO-uy-JyX"/>
+                                    <constraint firstAttribute="width" constant="200" id="nyH-Ca-DVf"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CNO-Vq-N8G" firstAttribute="centerY" secondItem="Wp2-wG-AQ5" secondAttribute="centerY" id="AWO-Uc-yk4"/>
+                            <constraint firstItem="CNO-Vq-N8G" firstAttribute="centerX" secondItem="Wp2-wG-AQ5" secondAttribute="centerX" id="Gn9-zV-mQq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TQ9-Hb-S0r"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5h-2b-Hc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="133"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mHh-3l-rCW">
+            <objects>
+                <viewController storyboardIdentifier="shoeViewController" id="TFA-fQ-BpL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Do0-TA-dOR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoe" translatesAutoresizingMaskIntoConstraints="NO" id="sfu-2a-DMR">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="fr1-Jt-YfI"/>
+                                    <constraint firstAttribute="height" constant="200" id="hs3-S9-yK4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sfu-2a-DMR" firstAttribute="centerX" secondItem="Do0-TA-dOR" secondAttribute="centerX" id="A0k-0t-QZW"/>
+                            <constraint firstItem="sfu-2a-DMR" firstAttribute="centerY" secondItem="Do0-TA-dOR" secondAttribute="centerY" id="dVT-xY-zvc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="F8n-Je-8EA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RM2-Oq-PaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="851"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uAc-Hi-Xtb">
+            <objects>
+                <viewController storyboardIdentifier="airplaneViewController" id="4xG-Is-Jnk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t3u-Nb-CeN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane" translatesAutoresizingMaskIntoConstraints="NO" id="93b-t6-BgR">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Fb8-lb-O3l"/>
+                                    <constraint firstAttribute="height" constant="200" id="KZ1-hF-HDW"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="93b-t6-BgR" firstAttribute="centerY" secondItem="t3u-Nb-CeN" secondAttribute="centerY" id="2gg-6T-UYh"/>
+                            <constraint firstItem="93b-t6-BgR" firstAttribute="centerX" secondItem="t3u-Nb-CeN" secondAttribute="centerX" id="ZJE-qh-XNR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pcG-0Q-6KC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o5W-4I-hQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="-574"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PGQ-o3-xig">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tYq-dd-lfb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="f39-5S-ULh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.23921568630000001" green="0.70196078429999997" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mv3-kZ-kqS" kind="relationship" relationship="rootViewController" id="Z0E-Y8-Qj5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bPW-sp-XvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-946" y="133"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="airplane" width="512" height="512"/>
+        <image name="gift" width="512" height="512"/>
+        <image name="shoe" width="512" height="512"/>
+    </resources>
+</document>

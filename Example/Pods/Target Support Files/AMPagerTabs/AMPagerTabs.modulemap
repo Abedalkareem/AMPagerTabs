@@ -1,0 +1,6 @@
+framework module AMPagerTabs {
+  umbrella header "AMPagerTabs-umbrella.h"
+
+  export *
+  module * { export * }
+}
