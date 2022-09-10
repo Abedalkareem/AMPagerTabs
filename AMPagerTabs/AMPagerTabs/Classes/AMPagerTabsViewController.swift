@@ -13,12 +13,13 @@ open class AMPagerTabsViewController: UIViewController {
 
   // MARK: - Properties
 
-  /// The object that acts as the delegate of the `AMPagerTabsViewController`.
-  public var delegate: AMPagerTabsViewControllerDelegate?
-  /// The property that hold the style and settings for the `AMPagerTabsViewController`.
+  /// An object that should confirm to  `AMPagerTabsViewControllerDelegate` to get updates.
+  public weak var delegate: AMPagerTabsViewControllerDelegate?
+
+  /// The pager tabs style and settings.
   public let settings = AMSettings()
 
-  /// The `ViewContollers` you want to show in the tabs.
+  /// The `ViewContoller`s you want to show in the tabs.
   public var viewControllers: [UIViewController] = [] {
     willSet {
       checkIfCanChangeValue(withErrorMessage: "You can't set the viewControllers twice")
@@ -52,8 +53,8 @@ open class AMPagerTabsViewController: UIViewController {
   }
 
   /// A Boolean value that determines whether scrolling is enabled.
-  public var isPagerScrollEnabled: Bool = true{
-    didSet{
+  public var isPagerScrollEnabled: Bool = true {
+    didSet {
       containerScrollView.isScrollEnabled = isPagerScrollEnabled
     }
   }
@@ -61,10 +62,10 @@ open class AMPagerTabsViewController: UIViewController {
   /// The color of the line in the tab.
   public var lineColor: UIColor? {
     get {
-      return line.backgroundColor
+      return lineView.backgroundColor
     }
     set {
-      line.backgroundColor = newValue
+      lineView.backgroundColor = newValue
     }
   }
 
@@ -74,7 +75,7 @@ open class AMPagerTabsViewController: UIViewController {
   private var containerScrollView: UIScrollView!
 
   private var tabButtons: [AMTabButton] = []
-  private var line = AMLineView()
+  private var lineView = AMLineView()
   private var lastSelectedViewIndex = 0
 
   // MARK: - ViewController lifecycle
@@ -112,17 +113,16 @@ open class AMPagerTabsViewController: UIViewController {
     children.forEach { $0.endAppearanceTransition() }
   }
 
-
-  override open func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+  override open func willTransition(to newCollection: UITraitCollection,
+                                    with coordinator: UIViewControllerTransitionCoordinator) {
     super.willTransition(to: newCollection, with: coordinator)
 
     coordinator.animate(alongsideTransition: { [weak self] _ in
-      guard let controller = self else{ return }
+      guard let controller = self else { return }
       controller.updateSizes()
     })
 
   }
-
 
   private func initScrollView() {
 
@@ -158,12 +158,15 @@ open class AMPagerTabsViewController: UIViewController {
     }
 
     for i in 0..<viewControllers.count {
-      let tabButton = AMTabButton(frame: CGRect(x: width*CGFloat(i), y: 0, width: width, height: settings.tabHeight))
+      let tabButton = AMTabButton(frame: CGRect(x: width * CGFloat(i),
+                                                y: 0,
+                                                width: width,
+                                                height: settings.tabHeight))
       let title = viewControllers[i].title
       if title == nil {
-        assertionFailure("You need to set a title for the view contoller \(String(describing: viewControllers[i])) , index: \(i)")
+        assertionFailure("You need to set a title for the view contoller \(String(describing: viewControllers[i])), index: \(i)")
       }
-      tabButton.setTitle(title , for: .normal)
+      tabButton.setTitle(title, for: .normal)
       tabButton.backgroundColor = settings.tabButtonColor
       tabButton.setTitleColor(settings.tabButtonTitleColor, for: .normal)
       tabButton.titleLabel?.font = tabFont
@@ -173,14 +176,15 @@ open class AMPagerTabsViewController: UIViewController {
       tabButtons.append(tabButton)
     }
 
-    line.frame = tabButtons.first!.frame
-    line.backgroundColor = lineColor ?? UIColor.white
-    tabScrollView.addSubview(line)
+    lineView.frame = tabButtons.first!.frame
+    lineView.backgroundColor = lineColor ?? UIColor.white
+    tabScrollView.addSubview(lineView)
   }
 
   // MARK: - Controlling tabs
 
-  @objc private func tabClicked(sender: AMTabButton){
+  @objc
+  private func tabClicked(sender: AMTabButton) {
 
     moveToViewContollerAt(index: sender.index!)
   }
@@ -209,18 +213,17 @@ open class AMPagerTabsViewController: UIViewController {
   }
 
   private func changeShowingControllerTo(index: Int) {
-    containerScrollView.setContentOffset(CGPoint(x: self.view.frame.size.width*(CGFloat(index)), y: 0), animated: true)
+    containerScrollView.setContentOffset(CGPoint(x: self.view.frame.size.width * (CGFloat(index)),
+                                                 y: 0), animated: true)
   }
-
-
 
   // MARK: - Animation
 
   private func animateLineTo(frame: CGRect) {
 
-    UIView.animate(withDuration: 0.5) {
-      self.line.frame = frame
-      self.line.draw(frame)
+    UIView.animate(withDuration: 0.2) {
+      self.lineView.frame = frame
+      self.lineView.layoutIfNeeded()
     }
   }
 
@@ -229,7 +232,10 @@ open class AMPagerTabsViewController: UIViewController {
   private func updateScrollViewsFrames() {
 
     tabScrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: settings.tabHeight)
-    containerScrollView.frame = CGRect(x: 0, y: settings.tabHeight, width: self.view.frame.size.width, height: self.view.frame.size.height - settings.tabHeight)
+    containerScrollView.frame = CGRect(x: 0,
+                                       y: settings.tabHeight,
+                                       width: self.view.frame.size.width,
+                                       height: self.view.frame.size.height - settings.tabHeight)
   }
 
   private func updateSizes() {
@@ -247,34 +253,35 @@ open class AMPagerTabsViewController: UIViewController {
     for i in 0..<viewControllers.count {
       let view = viewControllers[i].view
       let tabButton = tabButtons[i]
-      view?.frame = CGRect(x: width*CGFloat(i), y: 0, width: width, height: containerScrollView.frame.size.height)
-      tabButton.frame = CGRect(x: tabWidth*CGFloat(i), y: 0, width: tabWidth, height: settings.tabHeight)
+      view?.frame = CGRect(x: width * CGFloat(i), y: 0, width: width, height: containerScrollView.frame.size.height)
+      tabButton.frame = CGRect(x: tabWidth * CGFloat(i), y: 0, width: tabWidth, height: settings.tabHeight)
     }
 
-    containerScrollView.contentSize = CGSize(width: width*viewControllerCount, height: containerScrollView.frame.size.height)
-    tabScrollView.contentSize = CGSize(width: tabWidth*viewControllerCount, height: settings.tabHeight)
+    containerScrollView.contentSize = CGSize(width: width * viewControllerCount, height: containerScrollView.frame.size.height)
+    tabScrollView.contentSize = CGSize(width: tabWidth * viewControllerCount, height: settings.tabHeight)
 
     changeShowingControllerTo(index: lastSelectedViewIndex)
 
     animateLineTo(frame: tabButtons[lastSelectedViewIndex].frame)
   }
 
-  private func checkIfCanChangeValue(withErrorMessage message:String) {
+  private func checkIfCanChangeValue(withErrorMessage message: String) {
 
-    if viewControllers.count != 0 {
+    if !viewControllers.isEmpty {
       assertionFailure(message)
     }
   }
 }
 
-
 // MARK: - UIScrollViewDelegate
 
-extension AMPagerTabsViewController:UIScrollViewDelegate {
+extension AMPagerTabsViewController: UIScrollViewDelegate {
 
   var currentPage: Int {
 
-    return Int((containerScrollView.contentOffset.x + (0.5*containerScrollView.frame.size.width))/containerScrollView.frame.width)
+    return Int((containerScrollView.contentOffset.x +
+                (0.5 * containerScrollView.frame.size.width)) /
+               containerScrollView.frame.width)
   }
 
   public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -289,30 +296,15 @@ extension AMPagerTabsViewController:UIScrollViewDelegate {
     moveToViewContollerAt(index: currentPage)
   }
 
-  public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-
-  }
-}
-
-public class AMSettings{
-
-  public var tabBackgroundColor = #colorLiteral(red: 0.1568627451, green: 0.6588235294, blue: 0.8901960784, alpha: 1)
-  public var tabButtonColor = #colorLiteral(red: 0.1568627451, green: 0.6588235294, blue: 0.8901960784, alpha: 1)
-  public var tabButtonTitleColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-  public var pagerBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-
-  public var initialTabWidth:CGFloat = 100
-  public var tabHeight:CGFloat = 60
 }
 
 // MARK: - AMTabViewControllerDelegate
 
 /// The delegate of the `AMPagerTabsViewController` contoller must
-/// adopt the `AMPagerTabsViewControllerDelegate` protocol to get notfiy when tab change
-public protocol AMPagerTabsViewControllerDelegate {
+/// confirm to the `AMPagerTabsViewControllerDelegate` protocol to get notfiy when tab change.
+public protocol AMPagerTabsViewControllerDelegate: AnyObject {
   /// Tells the delegate that the tab changed to `index`
   ///
   /// - parameter index: The index of the current view controller
-  func tabDidChangeTo(_ index:Int);
+  func tabDidChangeTo(_ index: Int)
 }
-

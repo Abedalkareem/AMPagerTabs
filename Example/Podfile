@@ -1,5 +1,0 @@
-use_frameworks!
-
-target 'AMPagerTabs_Example' do
-  pod 'AMPagerTabs', :path => '../'
-end

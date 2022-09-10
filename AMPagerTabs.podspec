@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AMPagerTabs'
-  s.version          = '0.3.0'
+  s.version          = '1.0.0'
   s.summary          = 'Pager tabs for iOS.'
 
 # This description is used to generate tags and improve search results.
@@ -27,14 +27,14 @@ Pager tabs for iOS
   s.author           = { 'Abedalkareem' => 'abedalkareem.omreyh@yahoo.com' }
   s.source           = { :git => 'https://github.com/Abedalkareem/AMPagerTabs.git', :tag => s.version.to_s }
   s.swift_version = '5.0'
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  # s.social_media_url = 'https://twitter.com/abedalkareemomr'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '14.0'
 
-  s.source_files = 'AMPagerTabs/Classes/**/*'
+  s.source_files = 'AMPagerTabs/AMPagerTabs/Classes/**/*'
   
   # s.resource_bundles = {
-  #   'AMPagerTabs' => ['AMPagerTabs/Assets/*.png']
+  #   'AMPagerTabs' => ['AMPagerTabs/AMPagerTabs/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

@@ -23,7 +23,7 @@ class ViewController: AMPagerTabsViewController {
 
   }
 
-  func getTabs() -> [UIViewController]{
+  func getTabs() -> [UIViewController] {
     // instantiate the viewControllers
     let airplaneViewController = self.storyboard?.instantiateViewController(withIdentifier: "airplaneViewController")
     let giftViewController = self.storyboard?.instantiateViewController(withIdentifier: "giftViewController")
@@ -34,8 +34,7 @@ class ViewController: AMPagerTabsViewController {
     shoeViewController?.title = "Shoe"
     giftViewController?.title = "Gift"
 
-    return [airplaneViewController!,giftViewController!,shoeViewController!]
+    return [airplaneViewController!, giftViewController!, shoeViewController!]
   }
 
 }
-
