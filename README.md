@@ -58,7 +58,7 @@ class ViewController: AMPagerTabsViewController {
 
 ## Customization
 
-To customis the tabs, use the settings object before seting the viewControllers
+To customize the tabs, use the settings object before setting the viewControllers
 ```swift
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -71,8 +71,6 @@ To customis the tabs, use the settings object before seting the viewControllers
     self.settings.tabHeight = 100        
   }
 ```
-
-
 
 ## Installation
 
